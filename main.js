@@ -9,7 +9,7 @@ const traerDatos = async () => {
             listado.innerHTML += `
             <div class="contenedor_skins">
                 <h3>${skin.displayName}</h3>
-                <img src="${skin.displayIcon}">
+                <img src="${skin.displayIcon}" loading="lazy">
                 </div>
             `;
 

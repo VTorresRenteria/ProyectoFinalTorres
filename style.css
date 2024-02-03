@@ -16,6 +16,16 @@ img {
     height: 10rem;
 }
 
+main {
+    background-color: black;
+}
+
+.titulos {
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
 .contenedor {
     display: flex;
     flex-wrap: wrap;
@@ -24,6 +34,7 @@ img {
 }
 
 .contenedor_skins {
+    background-color: rgba(192, 44, 18, 0.767);
     text-align: center;
     display: flex;
     flex-direction: column;
