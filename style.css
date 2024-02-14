@@ -32,6 +32,16 @@ main {
     align-content: center;
     justify-content: center;
     color: white;
+
+    div {
+        background-color: rgba(192, 44, 18, 0.767);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    }
 }
 
 .contenedor_skins {

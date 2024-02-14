@@ -2,7 +2,6 @@ let skinsFav = JSON.parse(localStorage.getItem('skinsFav')) || [];
 let listado = document.getElementById("listado");
 const mostradorFav = document.getElementById('mostrador-fav');
 
-
 const traerDatos = async () => {
     try {
         const response = await fetch("https://valorant-api.com/v1/bundles?language=es-MX");
@@ -18,20 +17,28 @@ const traerDatos = async () => {
             listado.append(div);
 
             let botonAgregar = document.getElementById(`botonAgregar${skin.uuid}`);
-            botonAgregar.addEventListener("click", () => agregarFavorito(skin));
+            botonAgregar.addEventListener("click", () => {
+                agregarFavoritoToast();
+                agregarFavorito(skin);
+            });
         });
     } catch (error) {
         console.log(error);
     }
 };
 
+const agregarFavoritoToast = () => {
+    Toastify({
+        text: "Se agrego a favoritos",
+        duration: 3000,
+        destination: "./pages/favoritos.html",
+    }).showToast();
+};
+
 function agregarFavorito(skin) {
-    if (!skinsFav.some((favSkin) => favSkin.uuid === skin.uuid)) {
-        skinsFav.push(skin);
-        localStorage.setItem('skinsFav', JSON.stringify(skinsFav));
-        mostrarSkinsFavoritas();
-    }
+    !skinsFav.some((favSkin) => favSkin.uuid === skin.uuid) ? (skinsFav.push(skin), localStorage.setItem('skinsFav', JSON.stringify(skinsFav)), mostrarSkinsFavoritas()) : null;
 }
+
 
 function quitarFavorito(id) {
     skinsFav = skinsFav.filter((favItem) => favItem.uuid !== id);
